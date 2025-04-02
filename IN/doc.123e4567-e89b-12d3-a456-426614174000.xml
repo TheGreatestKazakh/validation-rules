@@ -1,0 +1,37 @@
+<ExportData>
+    <Version>1.0</Version>
+    <DocumentID>123e4567-e89b-12d3-a456-426614174000</DocumentID>
+    <TimeStamp>2025-03-06T14:30:00</TimeStamp>
+    <SignedData>
+        <Signature>BASE64_ENCODED_SIGNATURE</Signature>
+    </SignedData>
+    <Sender>
+        <SenderID>1002</SenderID>
+        <SenderName>Company X</SenderName>
+        <SenderINN>9876543210</SenderINN>
+    </Sender>
+    <MessageInfo>
+        <MessageType>Invoice</MessageType>
+        <MessageDate>2025-03-06</MessageDate>
+        <TransportType>1</TransportType>
+    </MessageInfo>
+    <Members>
+        <Member>
+            <MemberID>3001</MemberID>
+            <MemberName>Company Y</MemberName>
+            <MemberRole>Supplier</MemberRole>
+        </Member>
+        <Member>
+            <MemberID>3002</MemberID>
+            <MemberName>Company Z</MemberName>
+            <MemberRole>Customer</MemberRole>
+        </Member>
+    </Members>
+    <Operation>
+        <OperationID>7001</OperationID>
+        <TransactionDate>2025-03-05</TransactionDate>
+        <Amount>5000.00</Amount>
+        <Currency>EUR</Currency>
+        <OperationType>Refund</OperationType>
+    </Operation>
+</ExportData>

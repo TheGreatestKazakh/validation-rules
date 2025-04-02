@@ -1,0 +1,32 @@
+<ExportData>
+    <Version>1.0</Version>
+    <DocumentID>999e888f-777g-666h-555i-444j333k222l</DocumentID>
+    <TimeStamp>2025-03-07T10:30:00</TimeStamp>
+    <SignedData>
+        <Signature>BASE64_ENCODED_SIGNATURE_4</Signature>
+    </SignedData>
+    <Sender>
+        <SenderID>1301</SenderID>
+        <SenderName>John Doe</SenderName>
+        <SenderINN>9876543210</SenderINN>
+    </Sender>
+    <MessageInfo>
+        <MessageType>TaxPayment</MessageType>
+        <MessageDate>2025-03-07</MessageDate>
+        <TransportType>1</TransportType>
+    </MessageInfo>
+    <Members>
+        <Member>
+            <MemberID>6001</MemberID>
+            <MemberName>Tax Authority</MemberName>
+            <MemberRole>Recipient</MemberRole>
+        </Member>
+    </Members>
+    <Operation>
+        <OperationID>10001</OperationID>
+        <TransactionDate>2025-03-06</TransactionDate>
+        <Amount>2500.00</Amount>
+        <Currency>EUR</Currency>
+        <OperationType>TaxPayment</OperationType>
+    </Operation>
+</ExportData>

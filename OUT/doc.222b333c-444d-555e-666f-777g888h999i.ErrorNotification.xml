@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Notification type="ERROR">
+  <OriginalMessage>doc.222b333c-444d-555e-666f-777g888h999i.xml</OriginalMessage>
+  <Errors>
+    <Error>Версия сообщения 1.0 не поддерживается</Error>
+  </Errors>
+</Notification>

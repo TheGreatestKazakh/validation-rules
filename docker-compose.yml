@@ -1,0 +1,124 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    container_name: django_app
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+      - ./IN:/app/IN
+      - ./OUT:/app/OUT
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+      - minio
+    environment:
+      - DJANGO_SETTINGS_MODULE=xmlproject.settings
+      - POSTGRES_DB=xmldb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKET_NAME=xmlfiles
+    env_file:
+      - .env
+
+  worker:
+    build: .
+    container_name: celery_worker
+    command: celery -A xmlproject worker -l info
+    depends_on:
+      - db
+      - redis
+      - minio
+    environment:
+      - DJANGO_SETTINGS_MODULE=xmlproject.settings
+      - POSTGRES_DB=xmldb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKET_NAME=xmlfiles
+    volumes:
+      - .:/app
+      - ./IN:/app/IN
+      - ./OUT:/app/OUT
+
+  beat:
+    build: .
+    container_name: celery_beat
+    command: celery -A xmlproject beat -l info
+    depends_on:
+      - db
+      - redis
+      - minio
+    environment:
+      - DJANGO_SETTINGS_MODULE=xmlproject.settings
+      - POSTGRES_DB=xmldb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_BUCKET_NAME=xmlfiles
+    volumes:
+      - .:/app
+      - ./IN:/app/IN
+      - ./OUT:/app/OUT
+
+  db:
+    image: postgres:14
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=xmldb
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_broker
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio_storage
+    command: server /data --console-address ":9001"
+    environment:
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+
+volumes:
+  pg_data:
+  minio_data:
+  static_volume:

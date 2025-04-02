@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Notification type="ERROR">
+  <OriginalMessage>doc.123e4567-e89b-12d3-a456-426614174000.xml</OriginalMessage>
+  <Errors>
+    <Error>MessageVersion matching query does not exist.</Error>
+  </Errors>
+</Notification>

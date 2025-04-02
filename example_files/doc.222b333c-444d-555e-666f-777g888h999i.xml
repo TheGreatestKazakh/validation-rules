@@ -1,0 +1,37 @@
+<ExportData>
+    <Version>1.0</Version>
+    <DocumentID>222b333c-444d-555e-666f-777g888h999i</DocumentID>
+    <TimeStamp>2025-03-07T12:15:00</TimeStamp>
+    <SignedData>
+        <Signature>BASE64_ENCODED_SIGNATURE_5</Signature>
+    </SignedData>
+    <Sender>
+        <SenderID>1402</SenderID>
+        <SenderName>Cloud Services Ltd</SenderName>
+        <SenderINN>1122334455</SenderINN>
+    </Sender>
+    <MessageInfo>
+        <MessageType>ServiceSubscription</MessageType>
+        <MessageDate>2025-03-07</MessageDate>
+        <TransportType>3</TransportType>
+    </MessageInfo>
+    <Members>
+        <Member>
+            <MemberID>7001</MemberID>
+            <MemberName>Tech Startup Inc</MemberName>
+            <MemberRole>Subscriber</MemberRole>
+        </Member>
+        <Member>
+            <MemberID>7002</MemberID>
+            <MemberName>Cloud Services Ltd</MemberName>
+            <MemberRole>Provider</MemberRole>
+        </Member>
+    </Members>
+    <Operation>
+        <OperationID>11001</OperationID>
+        <TransactionDate>2025-03-06</TransactionDate>
+        <Amount>499.99</Amount>
+        <Currency>USD</Currency>
+        <OperationType>SubscriptionFee</OperationType>
+    </Operation>
+</ExportData>

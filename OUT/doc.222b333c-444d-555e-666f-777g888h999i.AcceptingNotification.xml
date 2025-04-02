@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Notification>
+  <Status>Accepted</Status>
+  <DocumentID>222b333c-444d-555e-666f-777g888h999i</DocumentID>
+  <TimeStamp>2025-03-07T12:15:00</TimeStamp>
+  <SignedData>
+    <Signature>BASE64_ENCODED_SIGNATURE_5</Signature>
+  </SignedData>
+  <ProcessingDetails>
+    <Version>1.0</Version>
+    <ProcessingTime>2025-04-02T11:10:11.413673</ProcessingTime>
+    <Message>Document successfully validated and processed.</Message>
+  </ProcessingDetails>
+</Notification>
